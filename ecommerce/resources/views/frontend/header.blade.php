@@ -1,13 +1,13 @@
  <div id="top-header">
      <div class="container">
          <ul class="header-links pull-left">
-             <li><a href="#"><i class="fa fa-phone"></i>+8801764533865</a></li>
-             <li><a href="#"><i class="fa fa-envelope-o"></i>fuadnafiz2554@gmail.com</a></li>
-             <li><a href="#"><i class="fa fa-map-marker"></i>Basundhara R/A</a></li>
+             <li><a href="#" style="font-size: 20px!important;"><i class="fa fa-phone"></i>+8801764533865</a></li>
+             <li><a href="#" style="font-size: 20px!important;"><i class="fa fa-envelope-o"></i>fuadnafiz2554@gmail.com</a></li>
+             <li><a href="#" style="font-size: 20px!important;"><i class="fa fa-map-marker"></i>Basundhara R/A</a></li>
          </ul>
          <ul class="header-links pull-right">
-             <li><a href="#"><i class=""></i>Taka</a></li>
-             <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+             <li><a href="#" style="font-size: 20px!important;"><i class="fa fa-user-o"></i>Taka</a></li>
+              
          </ul>
      </div>
  </div>
@@ -20,7 +20,7 @@
          <!-- row -->
          <div class="row">
              <!-- LOGO -->
-             <div class="col-md-3">
+             <div class="col-md-6">
                  <div class="header-logo">
                      <a href="#" class="logo">
                          <h2 style="color: red;font-weight:bolder;">E-Shop</h2>
@@ -46,7 +46,7 @@
              <!-- /SEARCH BAR -->
 
              <!-- ACCOUNT -->
-             <div class="col-md-3 clearfix">
+             <div class="col-md-6 clearfix">
                  <div class="header-ctn">
                      <!-- Wishlist -->
                      {{-- <div>
