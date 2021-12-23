@@ -9,6 +9,7 @@
                 <li><a href="#tab1">New Products</a></li>
                 <li><a href="#hot-deal">Hot Deals</a></li>
                 <li><a href="#top_selling">Top sellings</a></li>
+                <li><a href="#footer">Contact us</a></li>
             </ul>
             <!-- /NAV -->
         </div>
