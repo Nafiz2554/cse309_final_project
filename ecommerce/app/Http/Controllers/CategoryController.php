@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -12,8 +13,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $categories= Category::all(); 
+        return view('admin.category.index',compact('categories'));
     }
 
     /**
@@ -23,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+       return view('admin.category.create');
     }
 
     /**
@@ -34,7 +36,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $category=new Category;
+         $category->id= $request->category;
+         $category->name= $request->name;
+         $category->description= $request->description;
+         $category->image= $request->image->store('category');
+        //  if($request->hasFile('image')){
+        //      $file=$request->file('image');
+        //      $extention= $file->getClientOriginalExtension();
+        //      $filename=time().'.'.$extention;
+        //      $file->move('category',$filename);
+        //      $category->image= $filename;
+        //  }
+         $category->save();
+         return redirect()->back()->with('message','Category Successfully Created');
     }
 
     /**
@@ -43,9 +58,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function change_status(Category $category)
     {
-        //
+        if($category->status==1){
+            $category->update(['status'=>0]);
+        }else{
+            $category->update(['status'=>1]);
+        }
+        return redirect()->back()->with('message','Status changed successfully');
     }
 
     /**
@@ -54,9 +74,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+         return view('admin.category.edit',compact('category')); 
     }
 
     /**
@@ -66,9 +86,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $update=$category->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'image'=>$request->file('image')->store('category')
+        ]);
+        if($update){
+            return redirect('/categories')->with('message','Category updated successfully');
+        }
     }
 
     /**
@@ -77,8 +104,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete(Category $category)
     {
-        //
+        $delete=$category->delete();
+        if($delete){
+            return redirect()->back()->with('message','Category deleted successfully');
+        }
     }
 }
